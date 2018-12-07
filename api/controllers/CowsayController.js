@@ -12,8 +12,9 @@ module.exports = {
    * `CowsayController.say()`
    */
   say: async function (req, res) {
-    return res.view('cowsay',{cow: cowsay.say({
-      text : 'I\'m hungry!',
+    return res.view('cowsay', { cow: cowsay.say({
+      f: process.env.COW || 'stegausorus',
+      text : 'CDAD',
       e : 'oO',
       T : 'U '
     })});
