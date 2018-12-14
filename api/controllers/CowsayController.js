@@ -23,6 +23,15 @@ module.exports = {
       e : 'oO',
       T : 'U '
     })});
-  }
+  },
+
+  add: async function (req, res) {
+    return res.view('add');
+  },
+
+  create: async function(req, res) {
+    await Sentences.create({ sentence: req.param('sentence') });
+    return res.redirect('/say');
+  },
 };
 
