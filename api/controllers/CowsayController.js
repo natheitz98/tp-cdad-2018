@@ -12,7 +12,10 @@ module.exports = {
    * `CowsayController.say()`
    */
   say: async function (req, res) {
-    let s = await Sentences.find().limit(1);
+    let count = await Sentences.count();
+    console.debug('Got '+count+' sentences in database');
+    let s = await Sentences.find().limit(1).
+      skip(Math.floor(Math.random() * Math.floor(count)));
     let sentence = s[0].sentence;
     return res.view('cowsay', { cow: cowsay.say({
       f: process.env.COW || 'stegausorus',
