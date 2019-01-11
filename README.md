@@ -45,3 +45,8 @@ you to Marguerite, the talking cow.
 + [Community support options](https://sailsjs.com/support)
 + [Professional / enterprise options](https://sailsjs.com/enterprise)
 
+README_CONTROLE : 
+
+J'arrive à upload une image dans l'appli Sails, mais pas sur AWS, malgré un test avec 2 fonctions... (visibles dans le code)
+J'ai aussi écrit le code pour envoyer un mail, par conséquent non fonctionnel
+
