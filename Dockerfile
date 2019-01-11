@@ -1,6 +1,9 @@
 FROM node:10
 
-RUN npm install -g sails nodemon
+
+RUN npm install -g sails
+RUN npm install -g nodemon
+RUN npm install -g knex
 
 WORKDIR /app
 EXPOSE 1337

@@ -1,0 +1,6 @@
+<form action="/avatar" method="post" enctype="multipart/form-data">
+<input type="file" name="avatar" id="avatar">
+<label for="fileupload"> Select a file to upload</label>
+<input type="submit" value="submit">
+</form>
+
