@@ -6,7 +6,11 @@
  */
 
 var cowsay = require('cowsay');
-/*var email = require("./path/to/emailjs/email");*/
+var email = require('emailjs');
+
+var server 	= email.server.connect({
+   host:    "smtp://postmaster@mailgun.l3o.eu:fedbe91ae5e3529f94528dd311bea4c9-060550c6-d42c872f@smtp.mailgun.org:587",
+});
 
 module.exports = {
   /**
@@ -36,8 +40,14 @@ module.exports = {
 
   create: async function(req, res) {
     await Sentences.create({ sentence: req.param('sentence') });
-    return res.redirect('/say');
+		server.send({
+					 text:    "Merci pour la phrase",
+					 from:    "cdad@l3o.eu",
+					 to:      "natheitz@orange.fr",
+					 subject: "testing emailjs"})
+				return res.redirect('/say');
   },
+
 
  
 
@@ -65,5 +75,21 @@ module.exports = {
 
     });
     },
+		/* code pour envoyer l'image sur le serveur, non fonctionnel....
+		req.file('avatar').upload({
+				  adapter: require('skipper-s3'),
+					region: 'eu-west-3',
+				  key: 'AKIAJOCSBD4KTGNIE2YQ',
+				  secret: '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',
+				  bucket: 'lp-cdad-2018'
+				}, function (err, filesUploaded) {
+				  if (err) return res.serverError(err);
+				  return res.ok({
+				    files: filesUploaded,
+				    textParams: req.allParams()
+				  });
+			});
+    },
+*/
 };
 
