@@ -7,7 +7,7 @@
 
 var cowsay = require('cowsay');
 var email = require('emailjs');
-
+var aws_module = require('aws-sdk');
 var server 	= email.server.connect({
    host:    "smtp://postmaster@mailgun.l3o.eu:fedbe91ae5e3529f94528dd311bea4c9-060550c6-d42c872f@smtp.mailgun.org:587",
 });
@@ -39,7 +39,7 @@ module.exports = {
   },
 
   create: async function(req, res) {
-    await Sentences.create({ sentence: req.param('sentence') });
+    await Sentences.create({ sentence: req.param('sentence') }); //Code non fonctionnel pour envoyer un mail ( pas génant pour l'exécution du code)
 		server.send({
 					 text:    "Merci pour la phrase",
 					 from:    "cdad@l3o.eu",
@@ -71,9 +71,33 @@ module.exports = {
 
       console.log(uploadedFiles[0].filename);
       // send ok response
-      return res.ok();
+/*
+      let data = {
+			accessKeyId: "AKIAJOCSBD4KTGNIE2YQ", 
+			secretAccessKey: "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", 
+			region: "eu-west-3",
+      Bucket:'lp-cdad-2018',
+      Key: 
+      ContentType: 'image/png'
+    	};
 
+		  s3Bucket.upload(data, function (err, data) {
+		    if (err) {
+		      console.log('Error uploading Image!');
+		      res.json({error: err})
+		    } else {
+		      console.log('Image upload successfully!', data);
+		      res.json({message: 'Image upload successfully!'})
+		    }
+		  } )
+*/
+
+return res.ok();
     });
+
+
+
+
     },
 		/* code pour envoyer l'image sur le serveur, non fonctionnel....
 		req.file('avatar').upload({

@@ -6,6 +6,7 @@ RUN npm install -g nodemon
 RUN npm install -g knex
 RUN npm install -g emailjs
 RUN npm install -g skipper-s3
+RUN npm install -g aws-sdk
 WORKDIR /app
 EXPOSE 1337
 
