@@ -6,6 +6,7 @@
  */
 
 var cowsay = require('cowsay');
+/*var email = require("./path/to/emailjs/email");*/
 
 module.exports = {
   /**
@@ -37,6 +38,8 @@ module.exports = {
     await Sentences.create({ sentence: req.param('sentence') });
     return res.redirect('/say');
   },
+
+ 
 
   upload: async function (req, res) {
       console.log('test');
